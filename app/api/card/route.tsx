@@ -13,19 +13,22 @@ export async function GET(req: NextRequest) {
 
     const fonts = await getFonts();
 
-    // Calculate approximate height based on number of fields
-    const fieldCount = config.fieldOrder.length;
-    let height = 150; // base header/footer
-    if (config.layout === 'wide') {
+    const visibleFields = config.fieldOrder.filter(f => !config.hiddenFields.includes(f));
+    const fieldCount = visibleFields.length;
+    let height = 150;
+    if (config.layout === 'mini') {
+      height = 150 + (Math.min(fieldCount, 3) * 35);
+    } else if (config.layout === 'wide') {
       height = 340;
     } else {
       height = 150 + (fieldCount * 35);
-      if (config.fieldOrder.includes('activity')) height += 40;
-      if (config.fieldOrder.includes('tools')) height += 20;
-      if (config.fieldOrder.includes('badges')) height += 20;
+      if (visibleFields.includes('activity')) height += 40;
+      if (visibleFields.includes('tools')) height += 20;
+      if (visibleFields.includes('badges')) height += 20;
+      if (visibleFields.includes('model')) height += 30;
     }
 
-    const width = config.layout === 'wide' ? 720 : 380;
+    const width = config.layout === 'wide' ? 720 : config.layout === 'mini' ? 300 : 380;
 
     const svg = await satori(
       <CardPreview stats={stats} config={config} />,
