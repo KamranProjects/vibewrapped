@@ -21,7 +21,8 @@ export async function GET(req: NextRequest) {
     const fonts = await getFonts();
     const t = T[config.theme];
 
-    const label = `⚡ ${stats.model || 'claude'}  |  ${fmt(stats.tokens)} tokens  |  ${stats.ai_pct || 0}% AI`;
+    const modelName = stats.models?.[0]?.id || 'vibe';
+    const label = `⚡ ${modelName}  |  ${fmt(stats.tokens)} tokens  |  ${stats.ai_pct || 0}% AI`;
 
     const svg = await satori(
       <div
