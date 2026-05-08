@@ -1,5 +1,7 @@
 # Vibe Wrapped ⚡
 
+![Vibe Wrapped](https://vibewrapped-kamrankami5541623gmailcoms-projects.vercel.app/api/card?layout=wide&fields=username%2Cmodel%2Ctokens%2Ccost%2Cstreak%2Cchaos%2Csession_hours%2Cai_pct%2Cactivity%2Ctools%2Cbadges%2Cstars&username=KamranProjects&models=Main%3Agemini-1-5-pro%2CUi%3Aclaude-3-5-sonnet&tokens=310433&cost=0.337&ai_pct=96&streak=2&chaos=62&session_hours=4&tool_logos=antigravity.google%2Canthropic.com%2Cgithub.com%2Cvercel.com&activity=2%2C5%2C3%2C8%2C6%2C12%2C9%2C4%2C7%2C11%2C8%2C5%2C14%2C10%2C6%2C9%2C13%2C7%2C11%2C8%2C15%2C12%2C10%2C14%2C18%2C12%2C16%2C20&activity_label=GitHub+Commits&badges=vibe_coded%2Ctoken_addict%2Chuman_verified%2Cno_grass%2Cvibe_master&prompt_type=Chain+of+Thought&hallucinations=4204&last_updated=2024-05-08&stars=128&branding_label=%E2%9A%A1+Vibe+Wrapped&show_logo=false&show_footer=false)
+
 **Vibe Wrapped** is an open-source GitHub README card generator for developers who use AI. Like `github-readme-stats` but for your AI workflow — show off your token usage, estimated cost, AI vs human coding ratio, vibe streak, chaos level, and more.
 
 [![Vibe Wrapped Preview](https://vibewrapped.vercel.app/api/card?username=vibe_coder&tokens=2847392&streak=14&chaos=91)](https://vibewrapped.vercel.app)
