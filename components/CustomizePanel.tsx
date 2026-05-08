@@ -113,7 +113,7 @@ export const CustomizePanel: React.FC<CustomizePanelProps> = ({ config, onChange
 
       <Toggle
         label="Collapsible Card"
-        active={config.collapsible}
+        active={!!config.collapsible}
         onChange={val => updateConfig({ collapsible: val })}
         theme={config.theme}
       />

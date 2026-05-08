@@ -1,5 +1,5 @@
 export type Theme = 'light' | 'dark';
-export type Layout = 'compact' | 'wide';
+export type Layout = 'compact' | 'wide' | 'mini';
 
 export type FieldId =
   | 'username'
