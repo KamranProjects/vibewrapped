@@ -18,6 +18,7 @@ export const FIELD_DEFINITIONS: Record<FieldId, { icon: string; label: string; t
   last_updated: { icon: '📅', label: 'Last Updated', type: 'date' },
   stars: { icon: '⭐', label: 'GitHub Stars', type: 'number' },
   branding_label: { icon: '🏷️', label: 'Custom Branding', type: 'text' },
+  show_logo: { icon: '✨', label: 'Show Logo', type: 'boolean' },
 };
 
 export const MODEL_OPTIONS = [
