@@ -1,4 +1,4 @@
-import satori from 'satori';
+import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { parseParams } from '@/lib/parseParams';
 import { CardPreview } from '@/components/CardPreview';
@@ -30,21 +30,16 @@ export async function GET(req: NextRequest) {
 
     const width = config.layout === 'wide' ? 720 : config.layout === 'mini' ? 300 : 380;
 
-    const svg = await satori(
-      <CardPreview stats={stats} config={config} />,
+    return new ImageResponse(
+      (
+        <CardPreview stats={stats} config={config} />
+      ),
       {
         width,
         height,
         fonts: fonts as any,
       }
     );
-
-    return new Response(svg, {
-      headers: {
-        'Content-Type': 'image/svg+xml',
-        'Cache-Control': 'public, s-maxage=3600',
-      },
-    });
   } catch (e: any) {
     console.error(e.message);
     return new Response(`Failed to generate the image: ${e.message}`, {

@@ -1,4 +1,4 @@
-import satori from 'satori';
+import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { parseParams } from '@/lib/parseParams';
 import { getFonts } from '@/lib/fonts';
@@ -24,35 +24,30 @@ export async function GET(req: NextRequest) {
     const modelName = stats.models?.[0]?.id || 'vibe';
     const label = `⚡ ${modelName}  |  ${fmt(stats.tokens)} tokens  |  ${stats.ai_pct || 0}% AI`;
 
-    const svg = await satori(
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          background: t.surface,
-          border: `1px solid ${t.border}`,
-          borderRadius: '6px',
-          padding: '4px 12px',
-          color: t.text,
-          fontSize: '12px',
-          fontFamily: 'DM Sans, sans-serif',
-          fontWeight: 500,
-        }}
-      >
-        {label}
-      </div>,
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: t.surface,
+            border: `1px solid ${t.border}`,
+            borderRadius: '6px',
+            padding: '4px 12px',
+            color: t.text,
+            fontSize: '12px',
+            fontFamily: 'DM Sans, sans-serif',
+            fontWeight: 500,
+          }}
+        >
+          {label}
+        </div>
+      ),
       {
         height: 28,
         fonts: fonts as any,
       }
     );
-
-    return new Response(svg, {
-      headers: {
-        'Content-Type': 'image/svg+xml',
-        'Cache-Control': 'public, s-maxage=3600',
-      },
-    });
   } catch (e: any) {
     return new Response(`Failed to generate badge`, { status: 500 });
   }
