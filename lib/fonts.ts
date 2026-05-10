@@ -1,11 +1,8 @@
 export async function getFonts() {
-  const dmSansData = await fetch(
-    'https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2'
-  ).then(res => res.arrayBuffer());
-
-  const dmMonoData = await fetch(
-    'https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYthSQBLyM.woff2'
-  ).then(res => res.arrayBuffer());
+  const [dmSansData, dmMonoData] = await Promise.all([
+    fetch("https://fonts.bunny.net/dm-sans/files/dm-sans-latin-500-normal.ttf").then(r => r.arrayBuffer()),
+    fetch("https://fonts.bunny.net/dm-mono/files/dm-mono-latin-400-normal.ttf").then(r => r.arrayBuffer())
+  ]);
 
   return [
     {
