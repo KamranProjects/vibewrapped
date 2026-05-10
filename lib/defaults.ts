@@ -22,15 +22,47 @@ export const FIELD_DEFINITIONS: Record<FieldId, { icon: string; label: string; t
 };
 
 export const MODEL_OPTIONS = [
+  // Anthropic
+  { id: 'claude-3-7-sonnet', label: 'Claude 3.7 Sonnet', provider: 'Anthropic' },
   { id: 'claude-3-5-sonnet', label: 'Claude 3.5 Sonnet', provider: 'Anthropic' },
+  { id: 'claude-3-5-haiku', label: 'Claude 3.5 Haiku', provider: 'Anthropic' },
   { id: 'claude-3-opus', label: 'Claude 3 Opus', provider: 'Anthropic' },
-  { id: 'gpt-4o', label: 'GPT-4o', provider: 'OpenAI' },
-  { id: 'gpt-4-turbo', label: 'GPT-4 Turbo', provider: 'OpenAI' },
+
+  // OpenAI
   { id: 'o1-pro', label: 'OpenAI o1 Pro', provider: 'OpenAI' },
+  { id: 'o1-preview', label: 'OpenAI o1 Preview', provider: 'OpenAI' },
+  { id: 'o1-mini', label: 'OpenAI o1 Mini', provider: 'OpenAI' },
+  { id: 'gpt-4.5', label: 'GPT-4.5', provider: 'OpenAI' },
+  { id: 'gpt-4o', label: 'GPT-4o', provider: 'OpenAI' },
+  { id: 'gpt-4o-mini', label: 'GPT-4o Mini', provider: 'OpenAI' },
+  { id: 'gpt-4-turbo', label: 'GPT-4 Turbo', provider: 'OpenAI' },
+
+  // Google
+  { id: 'gemini-2-pro', label: 'Gemini 2.0 Pro', provider: 'Google' },
+  { id: 'gemini-2-flash', label: 'Gemini 2.0 Flash', provider: 'Google' },
   { id: 'gemini-1-5-pro', label: 'Gemini 1.5 Pro', provider: 'Google' },
-  { id: 'deepseek-v3', label: 'DeepSeek V3', provider: 'DeepSeek' },
+  { id: 'gemini-1-5-flash', label: 'Gemini 1.5 Flash', provider: 'Google' },
+
+  // DeepSeek
   { id: 'deepseek-r1', label: 'DeepSeek R1', provider: 'DeepSeek' },
-  { id: 'llama-3-1', label: 'Llama 3.1 405B', provider: 'Meta' },
+  { id: 'deepseek-v3', label: 'DeepSeek V3', provider: 'DeepSeek' },
+  { id: 'deepseek-coder-v2', label: 'DeepSeek Coder V2', provider: 'DeepSeek' },
+
+  // Meta
+  { id: 'llama-3-3-70b', label: 'Llama 3.3 70B', provider: 'Meta' },
+  { id: 'llama-3-1-405b', label: 'Llama 3.1 405B', provider: 'Meta' },
+  { id: 'llama-3-1-70b', label: 'Llama 3.1 70B', provider: 'Meta' },
+
+  // Mistral
+  { id: 'mistral-large-2', label: 'Mistral Large 2', provider: 'Mistral' },
+  { id: 'codestral', label: 'Codestral', provider: 'Mistral' },
+
+  // xAI
+  { id: 'grok-3', label: 'Grok 3', provider: 'xAI' },
+  { id: 'grok-2', label: 'Grok 2', provider: 'xAI' },
+
+  // Other
+  { id: 'custom', label: 'Custom Model', provider: 'Other' },
 ];
 
 export const TOOL_OPTIONS = [
