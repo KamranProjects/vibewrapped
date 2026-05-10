@@ -1,10 +1,10 @@
 export async function getFonts() {
   const dmSansData = await fetch(
-    'https://fonts.gstatic.com/s/dmsans/v14/rP2Fp2K8zQ2OLK8fT5asWvO_ADU.ttf'
+    'https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2'
   ).then(res => res.arrayBuffer());
 
   const dmMonoData = await fetch(
-    'https://fonts.gstatic.com/s/dmmono/v14/33X7da9MBy89S0C3mSkI6X0.ttf'
+    'https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYthSQBLyM.woff2'
   ).then(res => res.arrayBuffer());
 
   return [
