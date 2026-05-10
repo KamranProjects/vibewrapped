@@ -30,7 +30,7 @@ export async function GET(req: NextRequest) {
 
     const width = config.layout === 'wide' ? 720 : config.layout === 'mini' ? 300 : 380;
 
-    return new ImageResponse(
+    const imgResponse = new ImageResponse(
       (
         <CardPreview stats={stats} config={config} />
       ),
@@ -40,6 +40,15 @@ export async function GET(req: NextRequest) {
         fonts: fonts as any,
       }
     );
+
+    const imgBuffer = await imgResponse.arrayBuffer();
+
+    return new Response(imgBuffer, {
+      headers: {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (e: any) {
     console.error(e.message);
     return new Response(`Failed to generate the image: ${e.message}`, {

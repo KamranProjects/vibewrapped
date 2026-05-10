@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     const modelName = stats.models?.[0]?.id || 'vibe';
     const label = `⚡ ${modelName}  |  ${fmt(stats.tokens)} tokens  |  ${stats.ai_pct || 0}% AI`;
 
-    return new ImageResponse(
+    const imgResponse = new ImageResponse(
       (
         <div
           style={{
@@ -48,6 +48,15 @@ export async function GET(req: NextRequest) {
         fonts: fonts as any,
       }
     );
+
+    const imgBuffer = await imgResponse.arrayBuffer();
+
+    return new Response(imgBuffer, {
+      headers: {
+        'Content-Type': 'image/png',
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (e: any) {
     return new Response(`Failed to generate badge`, { status: 500 });
   }

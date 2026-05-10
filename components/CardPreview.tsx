@@ -129,7 +129,7 @@ const SplitBar = ({ ai, t }: { ai: number; t: any }) => (
         <span style={{ color: t.barHuman }}>{100 - ai}%</span>
       </span>
     </div>
-    <div style={{ height: '4px', borderRadius: '99px', background: t.barBg, overflow: 'hidden', display: 'flex' }}>
+    <div style={{ height: '4px', borderRadius: '99px', background: t.barBg, display: 'flex' }}>
       <div style={{ width: `${ai}%`, height: '100%', background: t.barAi, borderRadius: '99px' }} />
     </div>
   </div>
@@ -153,7 +153,7 @@ export const CardPreview: React.FC<CardPreviewProps> = ({ stats, config }) => {
         return null; // Handled in header if not hidden
       case 'model':
         return (
-          <div key={fieldId} style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', width: '100%' }}>
+          <div key={fieldId} style={{ display: 'flex', gap: '8px', width: '100%' }}>
             {(stats.models || []).map((m, idx) => (
               <div
                 key={idx}
@@ -206,8 +206,8 @@ export const CardPreview: React.FC<CardPreviewProps> = ({ stats, config }) => {
       case 'tools':
         return (
           <div key={fieldId} style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              {(stats.tools || []).map(tool => (
+             <div style={{ display: 'flex', gap: '6px' }}>
+              {(stats.tools || []).slice(0, 4).map(tool => (
                 <span
                   key={tool}
                   style={{
@@ -225,8 +225,8 @@ export const CardPreview: React.FC<CardPreviewProps> = ({ stats, config }) => {
               ))}
             </div>
             {stats.tool_logos && stats.tool_logos.length > 0 && (
-              <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-                {stats.tool_logos.map(domain => (
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                {stats.tool_logos.slice(0, 10).map(domain => (
                   <img
                     key={domain}
                     src={`https://img.logo.dev/${domain}?token=pk_WiwXIYQHTe6I5puSNMu9Gw&size=48`}
@@ -241,8 +241,8 @@ export const CardPreview: React.FC<CardPreviewProps> = ({ stats, config }) => {
         return <Row key={fieldId} label="GitHub Stars" value={fmt(stats.stars)} t={tWithAccent} customIcon={<StarIcon color={tWithAccent.accent} />} />;
       case 'badges':
         return (
-          <div key={fieldId} style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', width: '100%' }}>
-            {(stats.badges || []).map(id => {
+          <div key={fieldId} style={{ display: 'flex', gap: '5px', width: '100%' }}>
+            {(stats.badges || []).slice(0, 3).map(id => {
               const b = BADGE_DEFINITIONS.find(bd => bd.id === id);
               if (!b) return null;
               return (
@@ -266,7 +266,7 @@ export const CardPreview: React.FC<CardPreviewProps> = ({ stats, config }) => {
                 </span>
               );
             })}
-            {(stats.custom_badges || []).map((text, idx) => (
+            {(stats.custom_badges || []).slice(0, 2).map((text, idx) => (
               <span
                 key={`custom-${idx}`}
                 style={{
